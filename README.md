@@ -34,3 +34,9 @@
   - 본인 branch에서 매주 본인이 맡은 아이템 내용 정리 후 main branch로 Pull Request를 생성한다.
   - 담당 아이템이 아닌 내용을 정리하는 것은 자유
 
+<br />
+<hr />
+<p align="center">
+    <img width="7%" alt="_2021-05-12__1 58 58" src="https://user-images.githubusercontent.com/25525648/117926239-69859c00-b333-11eb-88d1-3c59bd5cf166.png">
+</p>
+<hr />
