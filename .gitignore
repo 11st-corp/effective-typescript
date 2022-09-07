@@ -1,1 +1,13 @@
 .DS_Store
+
+node_modules/
+
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
