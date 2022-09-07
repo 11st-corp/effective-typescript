@@ -28,7 +28,7 @@ tsc --noImplicitAny program.ts
 
 많은 `Typescript` 사용자들은 가능한 한 즉시 유효성을 검사하는 것을 선호하며 이것이 언어가 `Strictness`을 제공하는 주요 이유중 하나입니다.
 
-TypeScript에는 기본적으로 달리 명시되지 않는 한 모든 예제는 활성화됩니다. 
+TypeScript는 기본적으로 모든 flag들이 활성화됩니다. 
 
 `tsconfig.json`에서 `"strict": true`을 사용해 모든 `strict flag`들을 동시에 켤 수 있습니다. `strict flag` 중 알아야 할 가장 큰 두 가지는 `noImplicitAny` 및 `strictNullChecks`입니다.
 
