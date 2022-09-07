@@ -36,6 +36,18 @@ TypeScript에는 기본적으로 달리 명시되지 않는 한 모든 예제는
 
 `any`를 사용하는것은 `Typescript`를 사용하는 목적을 무효화하는 경우가 많습니다. 프로그램은 타입이 많을수록 더 많은 유효성 검사를 할 수 있으므로, 코드 작성 시 버그가 더 적게 발생합니다.
 
+```ts
+function add(a, b) { 
+// Parameter 'a' implicitly has an 'any' type.ts(7006)
+// Parameter 'b' implicitly has an 'any' type.ts(7006)
+    return a + b;
+}
+
+function subtract(a: number, b: number) {
+    return a - b;
+}
+```
+
 #### `strictNullChecks`
 
 기본적으로 `null`및 같은 값 `undefined`은 다른 유형에 할당할 수 있습니다.
