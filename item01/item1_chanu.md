@@ -97,6 +97,6 @@ const b = [] + 12;  // '12'
 ---
 
 <br/>
-<br/>go
+<br/>
 
 > Written with [StackEdit](https://stackedit.io/).
