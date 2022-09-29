@@ -11,7 +11,7 @@
 - 한 가지 값만 포함하는 타입: `unit` 또는 `literal` 타입
   - `type A = 'A';`
   - `type FourtyTwo = 42;`
-- 두개 혹은 세개의 값으로 묶인 타입:  `union` 타입
+- 두개 혹은 세개의 이상의 값으로 묶인 타입:  `union` 타입
   - `type AB = 'A' | 'B';`
 
 ### interface
@@ -50,7 +50,9 @@ type K = keyof (Person | Lifesapn);
 ```
 
 > 참고
+> 
 > keyof (A&B) = (keyof A) | (keyof B)
+> 
 > keyof (A|B) = (keyof A) & (keyof B)
 
 조금 더 일반적으로 `PersonSpan`을 선언하는 방법은 `extends` 키워드를 사용하는 방법이 있다. 
