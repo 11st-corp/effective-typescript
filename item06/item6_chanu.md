@@ -7,7 +7,7 @@
 
 #### 1. 변수의 타입 추론
 
-<img src="./src/img_01.png" width="450" height="200" >  
+<img src="./src/img_01.png" width="500">  
 
 - 책에서는 값을 통해 number로 추론하는 것으로 되어있었으나, intelij는 걍 값을 보여준다.
 
@@ -22,7 +22,7 @@ function add(a: number , b: number) {
 }
 ```
 
-<img src="./src/img_02.png" width="400" height="200" >  
+<img src="./src/img_02.png" width="500">  
 
 - 파라미터와 연산자의 유형에 따라 자동으로 추론하여 반환값이 number로 가이드 하고 있다.
 
@@ -33,7 +33,7 @@ function add(a: number , b: number) {
 
 > 특정 시점에 TS가 값의 타입을 어떻게 이해하고 있는지 살펴보는 것은 타입 확장과 축소의 개념을 위해 반드시 필요한 과정입니다.
 
-<img src="./src/img_03.png" width="450" height="200" >
+<img src="./src/img_03.png" width="500">
 
 - 실제로 if 분기를 통해 message의 존재여부를 판단하였고, 블럭 내부의 message의 타입은 null이 제외된 string인 것을 볼 수 있다.
 
@@ -44,14 +44,14 @@ function add(a: number , b: number) {
 
 > 메서드 체인에서의 값 추론은 해당 메서드의 이름을 조사하면 됩니다.
 
-<img src="./src/img_04.png" width="400" height="120" >
+<img src="./src/img_04.png" width="500">
 
 - path는 string타입으로, String의 메서드인 split을 호출할 수 있다. 그리고 반환값은 string 배열의 타입을 가진다. 
 - _string vs String : string은 primitive 타입으로, __'값'__ 으로 존재하는데 __'값'__ 은 메서드를 가질 수 없다. 그러므로 메서드를 사용하기 위해서 String __객체__ 로 변환하여 메서드를 호출하는 방식으로 수행된다. 이 때 사용되는 객체를 __wrapper객체__ 라고 한다._ 
 
 <br/>
 
-<img src="./src/img_05.png" width="600" height="140" >
+<img src="./src/img_05.png" width="500">
 
 - 하나 더 보자면, 위의 split의 반환값은 string 배열이고, Array의 메서드인 slice를 호출할 수 있다.
 
@@ -61,7 +61,7 @@ function add(a: number , b: number) {
 
 > 편집기 상의 타입 오류를 살펴보는 것도 타입 시스템의 성향을 파악하는데 좋은 방법입니다.
 
-<img src="./src/img_06.png" width="600" height="220" >
+<img src="./src/img_06.png" width="500">
 
 - function 내의 분기는 HTMLElement 타입만을 처리할 의도로 사용되었다. TS가 아니었다면 null의 타입 또한 object인지 몰랐을 것이다.
 
@@ -78,7 +78,7 @@ function add(a: number , b: number) {
 const num = Math.abs(3);
 ```
 
-<img src="./src/img_07.png" width="559" height="359" >
+<img src="./src/img_07.png" width="500">
 
 - 편집기의 기능을 활용하여 Math가 선언된 라이브러리와 Math의 타입을 확인할 수 있다. 실제로 클릭해보면 `lib.es5.d.ts` 파일 내에 형식이 선언되어있다. 
 
