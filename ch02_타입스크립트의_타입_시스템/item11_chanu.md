@@ -21,7 +21,7 @@ const r: Room =  {
 
 <br/>
 
-<img src="./src/img_01.png" width="600" >
+<img src="./item11/img_01.png" width="600" >
 
 - 실제로 위 코드에서 `Room` 인터페이스 내에 존재하지 않는 `elephant` 속성을 변수에 할당하고자 할 때, 오류를 발생시키고 있다.
 
@@ -134,7 +134,7 @@ const op: LineChartOptions = opts;
   - **공통 속성 체크** - 할당되는 객체가 선언된 속성을 하나라도 가지고 있는가?
 
 <br/>
-<img src="./src/img_02.png" width="600">
+<img src="./item11/img_02.png" width="600">
 
 - 실제로 `opts`객체는 `LineChartOptions`의 속성을 한 개도 가지고 있지 않다. 이로 인해 할당 시점에 오류를 발생시킨다. 
 
