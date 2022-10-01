@@ -46,6 +46,6 @@
 <br />
 <hr />
 <p align="center">
-    <img width="7%" alt="_2021-05-12__1 58 58" src="https://user-images.githubusercontent.com/25525648/117926239-69859c00-b333-11eb-88d1-3c59bd5cf166.png">
+    <img width="7%" alt="_2021-05-12__1 58 58" src="https://raw.githubusercontent.com/11st-corp/.github/main/profile/img/11st_logo.png?raw=true">
 </p>
 <hr />
