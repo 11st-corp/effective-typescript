@@ -6,7 +6,7 @@
 
 비슷한 코드가 반복된다면, 수정이 일어날 경우 반복되는 모든 곳에서 동일하게 수정을 해줘야 하고 실수할 확률이 올라갑니다.
 
-그런데 반복된 코드를 열심히 제거하면 DRY 원칙을 지켰던 개발자라도 타입에 관해서는 잘 지키지 못했을지도 모릅니다.
+그런데 반복된 코드를 열심히 제거하며 DRY 원칙을 지켰던 개발자라도 타입에 관해서는 잘 지키지 못했을지도 모릅니다.
 
 타입 시스템에 어떻게 **DRY 원칙**을 잘 적용할 수 있을까요?
 
@@ -69,7 +69,7 @@ interface Person {
 interface PersonWithBirthDate {
   firstName: string;
   lastName: string;
-  birst: Date;
+  birth: Date;
 }
 ```
 
@@ -135,7 +135,7 @@ type TopNavState = {
 
 <img width="647" alt="스크린샷 2022-10-05 오전 1 34 57" src="https://user-images.githubusercontent.com/76726411/193876277-83d5e431-d691-43b1-a73e-187f74ab618f.png">
 
-매핑된 타입은 배열의 필드를 루프도는 것과 같은 방식입니다. 이 패턴은 표준 라이브러리에서도 일반적으로 찾을 수 있으며, PICK 이라고 합니다.
+매핑된 타입은 배열의 필드를 루프 도는 것과 같은 방식입니다. 이 패턴은 표준 라이브러리에서도 일반적으로 찾을 수 있으며, PICK 이라고 합니다.
 
 ```typescript
 // 완벽한 정의는 아님
@@ -181,7 +181,7 @@ class UIwidget {
 type OptionsUpdate = { [k in keyof Options]?: Options[k] };
 ```
 
-keyof는 타입을 받아서 속성 타입의 유니온을 반환합니다.
+`keyof`는 타입을 받아서 속성 타입의 유니온을 반환합니다.
 
 ```typescript
 type OptionsKeys = keyof Options;
@@ -214,7 +214,7 @@ class UIwidget {
 
 함수에서 매개변수로 매핑할 수 있는 값을 제한하기 위해 타입 시스템을 사용합니다. 그럼 제네릭 타입에서 매개변수를 제한할 수 있는 방법은 무엇일까요?
 
-> 바로 extneds를 사용하는 것입니다.
+> 바로 extends를 사용하는 것입니다.
 
 ```typescript
 interface Name {
