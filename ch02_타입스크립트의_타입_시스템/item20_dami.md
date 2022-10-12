@@ -99,7 +99,7 @@ fetchProduct(id);
 
   - 참고
 
-    (ESLint no-shadow)[https://eslint.org/docs/latest/rules/no-shadow]
+    [ESLint no-shadow](https://eslint.org/docs/latest/rules/no-shadow)
 
     Disallow variable declarations from shadowing variables declared in the outer scope
 
