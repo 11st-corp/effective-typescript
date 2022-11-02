@@ -72,6 +72,8 @@ function drawLayer(layer: Layer) {
 
 이처럼 각 타입 속성 간의 관계를 제대로 모델링하면, 타입스크립트가 코드의 정확성을 체크하는 데 도움이 됩니다. 어떤 데이터 타입을 태그된 유니온으로 표현할 수 있다면, 보통 그렇게 하는 것이 좋습니다. 또는 여러 개의 선택적 필드가 동시에 값이 있거나 동시에 undefined인 경우도 태그된 유니온 패턴이 잘 맞습니다. 
 
+
+
 ### 문제 : 속성 간의 관계가 잘 표현되지 않음
 
 ```typescript
@@ -96,8 +98,8 @@ interface Person {
   name: string;
   // 아래 속성은 둘 다 있거나, 둘 다 없음
   birth?: {
-    placeOfBirth?: string;
-    dateOfBirth?: Date;
+    placeOfBirth: string;
+    dateOfBirth: Date;
   } 
 }
 ```
