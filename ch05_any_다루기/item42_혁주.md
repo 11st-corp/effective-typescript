@@ -18,7 +18,7 @@ function parseYAML(yaml: string): any {}
 대신 parseYAML을 호출한 곳에서 반환값을 원하는 타입으로 할당하는 것이 이상적입니다.
 
 ```typescript
-interface Book{
+interface Book {
   name: string;
   author: string;
 }
@@ -38,7 +38,7 @@ const book = parseYAML(`
 `);
 
 alert(book.title); // 오류가 발생해야 하는데, 발생하지 않음 -> 런타임에 undefined 경고
-book1('read'); // 오류가 발생해야 하는데, 발생하지 않음 -> 런타임에 TypeError 발생
+book('read'); // 오류가 발생해야 하는데, 발생하지 않음 -> 런타임에 TypeError 발생
 ```
 
 대신 parseYAML이 unknown 타입을 반환하게 만드는 것이 더 안전합니다.
@@ -170,5 +170,5 @@ unknown의 경우 분리되는 즉시 오류가 발생하여 더 안전합니다
 ## 요약
 
 - `unknown` 타입은 `any` 대신 사용할 수 있는 안전한 타입입니다. 어떠한 값이 있지만 그 타입을 알지 못하는 경우 사용합니다.
-사용자가 타입 단언문이나 타입 체크를 사용하도록 강제하려면 `unknown`을 사용하면 됩니다.
+  사용자가 타입 단언문이나 타입 체크를 사용하도록 강제하려면 `unknown`을 사용하면 됩니다.
 - `{}`, `object`, `unknown`의 차이점을 이해해야 합니다.
