@@ -2,11 +2,11 @@
 
 #### unknown
 
-- 함수의 반환값과 관련된 형태
-- 변수 선언과 관련된 형태
-- 단언문과 관련된 형태
+1. 함수의 반환값과 관련된 형태
+2. 변수 선언과 관련된 형태
+3. 단언문과 관련된 형태
 
-### 함수의 반환값과 관련된 unknown
+## 1. 함수의 반환값과 관련된 unknown
 
 YAML 파서인 parseYAML 함수를 작성한다고 가정해 보겠습니다.
 
@@ -18,6 +18,11 @@ function parseYAML(yaml: string): any {}
 대신 parseYAML을 호출한 곳에서 반환값을 원하는 타입으로 할당하는 것이 이상적입니다.
 
 ```typescript
+interface Book{
+  name: string;
+  author: string;
+}
+
 const book: Book = parseYAML(`
   name: 11st
   author: Dcron
@@ -27,12 +32,12 @@ const book: Book = parseYAML(`
 그러나 함수의 반환값에 타입 선언을 강제할 수 없기 때문에, **호출한 곳에서 타입 선언을 생략하게 되면** book 변수는 암시적 any 타입이 되고, 사용되는 곳마다 타입 오류가 발생하게 됩니다.
 
 ```typescript
-const book1 = parseYAML(`
+const book = parseYAML(`
   name: 11st
   author: Bad
 `);
 
-alert(book1.title); // 오류가 발생해야 하는데, 발생하지 않음 -> 런타임에 undefined 경고
+alert(book.title); // 오류가 발생해야 하는데, 발생하지 않음 -> 런타임에 undefined 경고
 book1('read'); // 오류가 발생해야 하는데, 발생하지 않음 -> 런타임에 TypeError 발생
 ```
 
@@ -87,7 +92,7 @@ book('read'); // ~~ 이 식은 호출할 수 없다.
 애초에 반환값이 Book 이라고 기대하며 함수를 호출하기 때문에 단언문은 문제가 되지 않습니다.
 Book 타입 기준으로 타입 체크가 되기 때문에, unknown 타입 기준으로 오류를 표시했던 예제보다 오류의 정보가 더 정확해집니다.
 
-### 변수 선언과 관련된 unknown
+## 2. 변수 선언과 관련된 unknown
 
 어떠한 값이 있지만 그 타입을 모르는 경우에 unknown을 사용합니다.
 
@@ -121,7 +126,7 @@ function isBook(val: unknown): val is Book {
 
 function processValue(val: unknown) {
   if (isBook(val)) {
-    val;
+    val; // type 이 Book
   }
 }
 ```
@@ -135,10 +140,10 @@ function safeParseYAML<T>(yaml: string): T {
 ```
 
 그러나 일반적으로 타입스크립트에서 좋지 않은 스타일입니다.
-제너릭을 사용한 스타일은 타입 단언문과 생김새는 달라보이지만 기능적으로는 동맇바니다.
+제너릭을 사용한 스타일은 타입 단언문과 생김새는 달라보이지만 기능적으로는 동일합니다.
 제너릭보다 unknown을 반환하고 사용자가 직접 단언문을 사용하거나 원하는대로 타입을 좁히도록 강제하는 것이 좋습니다.
 
-### 단언문과 관련된 unknown
+## 3. 단언문과 관련된 unknown
 
 이중 단언문에서 any 대신 unknown을 사용할 수도 있습니다.
 
@@ -156,7 +161,7 @@ unknown의 경우 분리되는 즉시 오류가 발생하여 더 안전합니다
 
 `object` 또는 `{}`를 사용하는 코드들도 존재합니다.
 
-- `{}` 타입은 `null`과 `undefined`를 제외한 모든 값을 포합합니다.
+- `{}` 타입은 `null`과 `undefined`를 제외한 모든 값을 포함합니다.
 - `object` 타입은 모든 비기본형(`non-primitive`) 타입으로 이루어집니다. 여기에는 `true` 또는 `12` 또는 `'foo'`가 포함되지 않지만 `객체`, `배열`은 포함됩니다.
 
 `unknown` 타입이 도입되기 이전에는 `{}`가 일반적으로 많이 쓰였지만, 최근에는 `{}`를 사용하는 경우가 드뭅니다.
@@ -164,6 +169,6 @@ unknown의 경우 분리되는 즉시 오류가 발생하여 더 안전합니다
 
 ## 요약
 
-`unknown` 타입은 `any` 대신 사용할 수 있는 안전한 타입입니다. 어떠한 값이 있지만 그 타입을 알지 못하는 경우 사용합니다.
+- `unknown` 타입은 `any` 대신 사용할 수 있는 안전한 타입입니다. 어떠한 값이 있지만 그 타입을 알지 못하는 경우 사용합니다.
 사용자가 타입 단언문이나 타입 체크를 사용하도록 강제하려면 `unknown`을 사용하면 됩니다.
-`{}`, `object`, `unknown`의 차이점을 이해해야 합니다.
+- `{}`, `object`, `unknown`의 차이점을 이해해야 합니다.
