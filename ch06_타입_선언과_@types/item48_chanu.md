@@ -54,7 +54,7 @@ const m: Measure = {
 
 - 아래와 같이 각 속성에 대한 주석이 편집기의 툴팁에 의해 보여진다.
 
-<img src="./item48/img.png" width="400" >
+<img src="item48/img.png" width="400" >
 
 
 <br/>
@@ -76,7 +76,7 @@ interface Vector3D {
 }
 ```
 
-<img src="./item48/img_1.png" width="500" >
+<img src="item48/img_1.png" width="500" >
 
 <br/>
 <br/>
