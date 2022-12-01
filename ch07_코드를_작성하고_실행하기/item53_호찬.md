@@ -59,6 +59,9 @@ type Flavor = 'vanilla' | 'chocolate' | 'strawberry';
 let flavor: Flavor = 'chocolate';
 ```
 
+- [Typescript Deep Dive 열거형(Enums)](https://radlohead.gitbook.io/typescript-deep-dive/type-system/enums)
+- [TypeScript enum을 사용하지 않는 게 좋은 이유를 Tree-shaking 관점에서 소개합니다.](https://engineering.linecorp.com/ko/blog/typescript-enum-tree-shaking/)
+
 ### 매개변수 속성
 
 ```typescript
