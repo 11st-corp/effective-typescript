@@ -292,7 +292,124 @@ const points = [
   [4, 5, 6],
 ];
 
-points.forEach(([x, y, z]) => console.log(x + y + z));
+points.forEach(([x, y, z]) => console.log(x + y + z)); // 6, 15
 ```
 
 단축 객체 표현과 마찬가지로 객체 구조 분해를 사용하면 문법이 간결해지고 변수를 사용할 때 실수를 줄일 수 있게 때문에 적극적으로 사용하는 것을 권장합니다.
+
+### 함수 매개변수 기본값 사용하기
+
+자바스크립트에서 함수의 모든 매개변수는 선택적이며, 매개변수를 지정하지 않으면 undefined로 간주됩니다.
+
+```javascript
+function log2(a, b) {
+  console.log(a, b);
+}
+log2(); // undefined undefined
+```
+
+옛날 방법
+
+```javascript
+function parseNum(str, base) {
+  base = base || 10;
+  return parseInt(str, base);
+}
+```
+
+모던 자바스크립트 방법
+
+```javascript
+function parseNum(str, base = 10) {
+  return parseInt(str, base);
+}
+```
+
+코드가 간결해질 뿐 아니라 base가 선택적 매개변수라는 것도 명확하게 나타냅니다.
+
+또한 기본값을 기반으로 타입 추론도 가능합니다.
+
+### 저수준 프로미스나 콜백 대신 async/await 사용하기
+
+콜백과 프로미스보다 async/await을 사용하면 코드가 간결해져서 버그나 실수를 방지할 수 있습니다.
+
+또한 비동기 코드에 타입 정보가 전달되어 타입 추론을 가능하게 합니다.
+
+```typescript
+function getJSON(url: string) {
+  return fetch(url).then((response) => response.json());
+}
+
+function getJSONCallback(url: string, cb: (result: unknown) => void) {
+  // ...
+}
+```
+
+콜백과 프로미스를 사용한 코드보다는 다음처럼 async와 await로 작성한 코드가 훨씬 깔끔하고 직관적입니다.
+
+```typescript
+async function getJSON(url: string) {
+  const response = await fetch(url);
+  return response.json();
+}
+```
+
+### 연관 배열에 객체 대신 Map과 Set 사용하기
+
+아이템 15에서 객체의 인덱스 시그니처를 사용하는 방법을 다루었습니다.
+
+인덱스 시그니처는 편리하지만 몇 가지 문제점이 있습니다. 문자열 내의 단어 개수를 세는 함수를 예시로 들어보겠습니다.
+
+```typescript
+function countWords(text: string) {
+  const counts: { [word: string]: number } = {};
+  for (const word of text.split(/[\s,.]+/)) {
+    counts[word] = 1 + (counts[word] || 0);
+  }
+  return counts;
+}
+
+console.log(countWords('Objects have a constructor'));
+```
+
+실행 결과는 다음과 같습니다.
+
+```javascript
+{
+  Objects: 1,
+  have: 1,
+  a: 1,
+  constructor: '1function Object() { [native code] }' // 1 + function Object() { [native code] }
+}
+```
+
+constructor의 초기값은 undefined가 아니라 Object.prototype에 있는 생성자 함수입니다.
+
+원치 않는 값일 뿐 아니라 타입도 number가 아닌 string이 됩니다.
+
+이런 문제를 방지하려면 Map을 사용하는것이 좋습니다.
+
+```typescript
+function countWordsMap(text: string) {
+  const counts = new Map<string, number>(); // 맵을 만듭니다.
+  for (const word of text.split(/[\s,.]+/)) {
+    counts.set(word, 1 + (counts.get(word) || 0)); // get: word에 해당하는 값을 반환합니다.(이 때, 맵은 키의 타입을 변환시키지 않고 그대로 유지합니다.)
+  }
+  return counts;
+}
+console.log(countWordsMap('Objects have a constructor')); // Map(4) { 'Objects' => 1, 'have' => 1, 'a' => 1, 'constructor' => 1 }
+```
+
+### 타입스크립트에 use strict 넣지 않기
+
+타입스크립트에서 수행되는 안전성 검사(sanity check)가 엄격 모드보다 훨씬 더 엄격한 체크를 하기 때문에, 타입스크립트 코드에서 'use strict'는 무의미합니다.
+
+타입스크립트 코드에 'use strict'를 쓰지 않고, 대신 alwaysStrict 설정을 사용해야 합니다.(옵션 설정시 엄격 모드로 코드를 파싱하고 생성되는 자바스크립트에 'use strict'를 추가함)
+
+## 요약
+
+- 타입스크립트 개발 환경은 모던 자바스크립트도 실행할 수 있으므로 모던 자바스크립트의 최신 기능들을 적극적으로 사용하길 바랍니다.
+  - 코드 품질을 향상시킬 수 있고, 타입스크립트의 타입 추론도 더 나아집니다.
+- 타입스크립트 개발환경에서는 컴파일러와 언어 서비스를 통해 클래스, 구조분해, async/await 같은 기능을 쉽게 배울 수 있습니다.
+- 'use strict'는 타입스크립트 컴파일러 수준에서 사용되므로 코드에서 제거해야 합니다.
+- 결국 typescript를 잘 하려면 javascript도 잘해야 한다는 결론.
