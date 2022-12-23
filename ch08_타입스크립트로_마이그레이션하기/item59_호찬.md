@@ -12,13 +12,13 @@ const person = {first: 'Grace', last: 'Hopper'};
 
 <img src="./item59/img/ts-check.png" width="300px" />
 
-`person.first`의 타입은 string으로 추론되었고, 2 * person.first는 타입 불일치 오류가 발생했다.
+`person.first`의 타입은 string으로 추론되었고, `2 * person.first`는 타입 불일치 오류가 발생했다.
 
 #### 선언 되지 않은 전역 변수
 
 <img src="./item59/img/global.png" width="300px" />
 
-어딘가에 선언되어 있는 전역 변수의 경우 `types.d.ts` 파일에 별도로 정의 해주어야합니다.
+어딘가에 선언되어 있는 전역 변수의 경우 `types.d.ts` 파일에 별도로 정의 해주어야 한다.
 
 ```ts
 interface UserData {
