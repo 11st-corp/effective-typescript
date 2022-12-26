@@ -26,7 +26,7 @@ function addCounter(el: HTMLElement) {
 
 오래된 브라우저에서 async와 await를 지원하기위해 타입스크립트는 이벤트 핸들러를 상태 머신으로 재작성한다. 원본 코드하고 동일하게 동작하지만 이해하기가 어렵다.
 
-![before-source-map](item57mg/before-source-map.png)
+![before-source-map](./item57/img/before-source-map.png)
 
 sourcemap 옵션을 켜서 컴파일을 실행하면, .js 와 .js.map 두개의 파일이 생성된다.
 
@@ -36,7 +36,7 @@ tsc index.ts --sourcemap true
 
 sourcemap 파일을 생성한다면, 브라우저에서 Typescript로 디버깅이 가능하다.
 
-![after-source-map](item57mg/after-source-map.png)
+![after-source-map](./item57/img/after-source-map.png)
 
 디버거 좌측 파일 목록에서 index.ts가 기울임(이탤릭) 글꼴로 나오는 것을 확인할 수 있다. 기울임 글꼴은 웹 페이지에 포함된 '실제' 파일이 아니라는 것을 뜻한다. **실제로는 소스맵을 통해 타입스크립트처럼 보이는 것뿐이다.**
 
